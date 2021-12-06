@@ -1,0 +1,4 @@
+---
+# handlers file for prod
+- name: restart tomcat 
+  systemctl: name:tomcat9 state:restarted

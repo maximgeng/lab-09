@@ -1,0 +1,23 @@
+---
+# tasks file for build
+- name: Ensure mvn package is present
+  apt:
+   name: maven
+   state: present
+
+- name: Ensure git package is present
+  apt:
+   name: git
+   state: present
+
+- name: Build app
+  shell: mvn package chdir="/home/user/build/"
+
+- name: Copy app from build
+  synchronize:
+   src: /home/user/build/target/hello-1.0.war
+   dest: /home/user/
+   mode: pull
+  delegate_to: 127.0.0.1
+
+

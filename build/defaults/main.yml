@@ -1,0 +1,5 @@
+---
+# defaults file for build
+src_folder: /home/user/build/
+dest_folder: /home/user/
+

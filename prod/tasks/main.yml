@@ -1,0 +1,16 @@
+---
+# tasks file for prod
+- name: Ensure OpenJDK is present
+  apt:
+   name: openjdk-11-jre-headless
+   state: present
+
+- name: Ensure Tomcat is present
+  apt:
+   name: tomcat9
+   state: present
+
+- name: Copy App to prod
+  copy: src={{soure_folder}}/hello-1.0.war dest={{dest_folder}}
+  notify:
+   - restart tomcat
